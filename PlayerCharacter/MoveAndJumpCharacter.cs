@@ -3,18 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveAndJumpCharacter : MonoBehaviour {
+public class MoveAndJumpAndFloatCharacter : MonoBehaviour
+{
+    //Properties
+    public float Speed = 1;
 
-	//Properties
-    public float speed = 1;
-    public float jumpForce = 75;
-    private float jumpReturn;
-    public float gravity = 1;
-    private Vector3 moveDirection;
-    private CharacterController myController;
-    public Animator characterAnim;
+    public float JumpForce = 75;
+    private float _jumpReturn;
+    public float Gravity = 1;
+    private Vector3 _moveDirection;
+    private CharacterController _myController;
+    public Animator CharacterAnim;
 
-    void Start()
+    private void Start()
     {
         UIAnimStates.CanPlay += CanPlayHandler;
         CanPlayHandler();
@@ -24,43 +25,43 @@ public class MoveAndJumpCharacter : MonoBehaviour {
     private void EndGameHandler()
     {
         MoveViaKeys.Speed -= MoveCharacter;
-        MoveViaKeys.Jump -= JumpCharacter;
+        MoveViaKeys.Jump -= JumpAndFloatCharacter;
     }
 
-    private void CanPlayHandler ()
+    private void CanPlayHandler()
     {
-        myController = GetComponent<CharacterController>();
-        jumpReturn = jumpForce;
+        _myController = GetComponent<CharacterController>();
+        _jumpReturn = JumpForce;
         MoveCharacterViaButtons.MoveCharacter += MoveCharacter;
         MoveViaKeys.Speed += MoveCharacter;
-        MoveViaKeys.Jump += JumpCharacter;
+        MoveViaKeys.Jump += JumpAndFloatCharacter;
         StartCoroutine(StopJumpForce());
     }
 
-    IEnumerator StopJumpForce()
+    private IEnumerator StopJumpForce()
     {
-        while (jumpForce > 0)
+        while (JumpForce > 0)
         {
-            jumpForce--;
+            JumpForce--;
             yield return new WaitForFixedUpdate();
         }
     }
 
-    void JumpCharacter()
+    private void JumpAndFloatCharacter()
     {
-        jumpForce = jumpReturn;
+        JumpForce = _jumpReturn;
         StartCoroutine(StopJumpForce());
     }
 
-    void MoveCharacter(float _speed)
+    private void MoveCharacter(float speed)
     {
-        if (myController.isGrounded)
+        if (_myController.isGrounded)
         {
-            moveDirection.x = _speed * speed;
-            moveDirection.z = 0;
-            moveDirection.y = jumpForce * Time.deltaTime;
+            _moveDirection.x = speed * Speed;
+            _moveDirection.z = 0;
+            _moveDirection.y = JumpForce * Time.deltaTime;
         }
-        moveDirection.y -= gravity * Time.deltaTime;
-        myController.Move(moveDirection * Time.deltaTime);
+        _moveDirection.y -= Gravity * Time.deltaTime;
+        _myController.Move(_moveDirection * Time.deltaTime);
     }
 }
