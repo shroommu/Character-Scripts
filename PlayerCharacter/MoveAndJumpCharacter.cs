@@ -10,6 +10,7 @@ public class MoveAndJumpAndFloatCharacter : MonoBehaviour
 
     public float JumpForce = 75;
     private float _jumpReturn;
+    //c
     public float Gravity = 1;
     private Vector3 _moveDirection;
     private CharacterController _myController;
