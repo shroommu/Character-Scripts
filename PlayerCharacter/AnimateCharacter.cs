@@ -37,7 +37,7 @@ public class AnimateCharacter : MonoBehaviour
     }
      public void FireWeapon (                                                                                                                                                                                                                                                               ) {
         GameData.Instance.currentWeapon.Fire(true);
-        Invoke("EndFireWeapon", GameData.Instance.currentWeapon.data.fireRate);
+        Invoke("EndFireWeapon", GameData.Instance.currentWeapon.Data.FireRate);
      }
 
      public void EndFireWeapon () {
