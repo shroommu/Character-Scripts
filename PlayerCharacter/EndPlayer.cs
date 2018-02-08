@@ -10,9 +10,9 @@ public class EndPlayer : MonoBehaviour {
         EndGame.EndGameBoolHandler += OnEndPlayer;
     }
 
-	bool OnEndPlayer(bool _b)
+	bool OnEndPlayer(bool b)
     {
-        if (_b)
+        if (b)
         {
             //Do Work
         }
@@ -21,6 +21,6 @@ public class EndPlayer : MonoBehaviour {
             EndGame.EndGameBoolHandler -= OnEndPlayer;
 //            this.enabled = false;//End Player Scripts
         }
-        return _b;
+        return b;
     }
 }
