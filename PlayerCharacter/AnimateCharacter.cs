@@ -9,39 +9,38 @@ public class AnimateCharacter : MonoBehaviour
     //Events
     //public static UnityAction<WeaponType.weaponSelection> ReturnFire;
     //public static UnityAction<WeaponType.weaponSelection> EndReturnFire;
-    public static UnityAction FireAction;
     //Properties
-    public Animator characterAnim;
-    public Weapon weapon;
-    public GameObject onFX;
-    public AudioSource soundFX;
+    public Animator CharacterAnim;
+    public Weapon Weapon;
+    public GameObject OnFx;
+    public AudioSource SoundFx;
+    public WeaponsList MyWeaponsList;
 
     public void Step () {
-        soundFX.Play();
+        SoundFx.Play();
     }
    
     void Start()
     {
         Jump();
-        onFX.SetActive(true);
         EndGame.EndGameBoolHandler += OnEndGameEvent;
         MoveViaKeys.Jump += Jump;
         MoveViaKeys.Speed += Walk;
         WeaponButton.CanFire += FireHandler;
     }
 
-    private void FireHandler(float _num)
+    private void FireHandler(float num)
     {
-        characterAnim.SetLayerWeight(1, 1);
-        characterAnim.SetTrigger("FireWeapon");
+        CharacterAnim.SetLayerWeight(1, 1);
+        CharacterAnim.SetTrigger("FireWeapon");
     }
      public void FireWeapon (                                                                                                                                                                                                                                                               ) {
-        GameData.Instance.currentWeapon.Fire(true);
-        Invoke("EndFireWeapon", GameData.Instance.currentWeapon.Data.FireRate);
+         MyWeaponsList.CurrentWeapon.Fire(true);
+       // Invoke("EndFireWeapon", _data.CurrentWeapon.FireRate);
      }
 
      public void EndFireWeapon () {
-        GameData.Instance.currentWeapon.Fire(false);
+       // Data.CurrentWeapon.Fire(false);
      }
 
     void OnWinGame()
@@ -52,16 +51,16 @@ public class AnimateCharacter : MonoBehaviour
     void OnLooseGame()
     {
         Walk(0);
-        characterAnim.SetBool("Arm", false);
-        characterAnim.SetLayerWeight(1, 0);
-        characterAnim.SetBool("Die", true);
+        CharacterAnim.SetBool("Arm", false);
+        CharacterAnim.SetLayerWeight(1, 0);
+        CharacterAnim.SetBool("Die", true);
         EndGame.EndGameBoolHandler -= OnEndGameEvent;
         this.enabled = false;
     }
 
-    bool OnEndGameEvent(bool _b)
+    bool OnEndGameEvent(bool b)
     {
-        if (_b)
+        if (b)
         {
             OnWinGame();
         }
@@ -69,20 +68,20 @@ public class AnimateCharacter : MonoBehaviour
         {
             OnLooseGame();
         }
-        return _b;
+        return b;
     }
 
-    void Walk(float _speed)
+    void Walk(float speed)
     {
-        characterAnim.SetFloat("Walk", _speed);
+        CharacterAnim.SetFloat("Walk", speed);
     }
     void Jump()
     {
-        characterAnim.SetBool("Jump", true);
+        CharacterAnim.SetBool("Jump", true);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        characterAnim.SetBool("Jump", false);
+        CharacterAnim.SetBool("Jump", false);
     }
 }

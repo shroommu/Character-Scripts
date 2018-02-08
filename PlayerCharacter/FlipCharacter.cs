@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FlipCharacter : MonoBehaviour
 {
-    Vector3 RotateDirection;
+    Vector3 _rotateDirection;
     void Start()
     {
         MoveViaKeys.Direction = Flip;
     }
 
-    void Flip(float _direction)
+    void Flip(float direction)
     {
-        RotateDirection.y = _direction;
-        transform.rotation = Quaternion.Euler(RotateDirection);
+        _rotateDirection.y = direction;
+        transform.rotation = Quaternion.Euler(_rotateDirection);
     }
 }
