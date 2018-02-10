@@ -6,10 +6,6 @@ using System;
 
 public class AnimateCharacter : MonoBehaviour
 {
-    //Events
-    //public static UnityAction<WeaponType.weaponSelection> ReturnFire;
-    //public static UnityAction<WeaponType.weaponSelection> EndReturnFire;
-    //Properties
     public Animator CharacterAnim;
     public Weapon Weapon;
     public GameObject OnFx;
@@ -24,9 +20,9 @@ public class AnimateCharacter : MonoBehaviour
     {
         Jump();
         EndGame.EndGameBoolHandler += OnEndGameEvent;
-        MoveViaKeys.Jump += Jump;
+        //MoveViaKeys.Jump += Jump;
         MoveViaKeys.Speed += Walk;
-        WeaponButton.CanFire += FireHandler;
+        WeaponUi.CanFire += FireHandler;
     }
 
     private void FireHandler(float num)

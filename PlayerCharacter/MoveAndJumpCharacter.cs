@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
-public class MoveAndJumpAndFloatCharacter : ScriptableObject
+public class MoveAndJumpAndFloatCharacter : CharacterMovement
 {
     //Properties
     public float Speed = 1;
@@ -21,10 +21,11 @@ public class MoveAndJumpAndFloatCharacter : ScriptableObject
         EndGame.TurnOffGame += EndGameHandler;
     }
 
+
     private void EndGameHandler()
     {
         //MoveViaKeys.Speed -= MoveCharacter;
-        MoveViaKeys.Jump -= JumpAndFloatCharacter;
+        //MoveViaKeys.Jump -= JumpAndFloatCharacter;
     }
 
     private void CanPlayHandler()
@@ -33,34 +34,76 @@ public class MoveAndJumpAndFloatCharacter : ScriptableObject
         _jumpReturn = JumpForce;
         //MoveCharacterViaButtons.MoveCharacter += MoveCharacter;
         //MoveViaKeys.Speed += MoveCharacter;
-        MoveViaKeys.Jump += JumpAndFloatCharacter;
+       // MoveViaKeys.Jump += JumpAndFloatCharacter;
         //StartCoroutine(StopJumpForce());
     }
 
-    private IEnumerator StopJumpForce()
+    public override IEnumerator Jump ()
     {
         while (JumpForce > 0)
         {
             JumpForce--;
             yield return new WaitForFixedUpdate();
         }
+        JumpForce = _jumpReturn;
     }
 
-    private void JumpAndFloatCharacter()
+    public void JumpAndFloatCharacter()
     {
         JumpForce = _jumpReturn;
         //StartCoroutine(StopJumpForce());
     }
 
-    public void MoveCharacter(float speed, CharacterController characterController)
+    private CharacterController _characterController;
+
+    public override CharacterController MyCharacterController
     {
-        if (characterController.isGrounded)
+      
+        set
+        {
+            _characterController = value;
+        }
+    }
+
+    public override Animator MyAnimator
+    {
+        set { throw new NotImplementedException(); }
+    }
+
+    public override void LeftHander()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void RightHander()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void UpHander()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void DownHander()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void SpaceHander()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Move(float speed)
+    {
+        if (_characterController.isGrounded)
         {
             _moveDirection.x = speed * Speed;
             _moveDirection.z = 0;
-            //_moveDirection.y = JumpForce * Time.deltaTime;
+            _moveDirection.y = JumpForce * Time.deltaTime;
         }
         _moveDirection.y -= Gravity * Time.deltaTime;
-        characterController.Move(_moveDirection * Time.deltaTime);
+        _characterController.Move(_moveDirection * Time.deltaTime);
     }
 }

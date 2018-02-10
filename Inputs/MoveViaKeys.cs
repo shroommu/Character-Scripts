@@ -1,34 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
+using UnityEngine.Events;
 
 public class MoveViaKeys : MonoBehaviour
 {
     //Events
-    public static Action<float> Speed;
-    public static Action Jump;
-    public static Action<float> Direction;
-    
+    public static UnityAction<float> Speed;
+
+    public static UnityAction<Coroutine> Jump;
+    public static UnityAction<float> Direction;
+
     //Properties
     private CharacterController _myController;
+
     public Animator CharacterAnim;
-    public MoveAndJumpAndFloatCharacter MyMoveAndJumpAndFloatCharacter;
-    
-    
-    
+    public CharacterMovement MyCharacterMovement;
+
     //Methods
-    void Start()
+    private void Start()
     {
         EndGame.TurnOffGame += DisableScript;
-        _myController = GetComponent<CharacterController>();
+        MyCharacterMovement.MyCharacterController = GetComponent<CharacterController>();
     }
 
-    void DisableScript()
+    private void DisableScript()
     {
         this.enabled = false;
     }
 
-    void Update()
+    private void Update()
     {
         if (Input.GetKey(KeyCode.LeftArrow) && Direction != null)
         {
@@ -40,13 +40,14 @@ public class MoveViaKeys : MonoBehaviour
             Direction(0);
         }
 
-        if (Speed != null)
-            MyMoveAndJumpAndFloatCharacter.MoveCharacter(Input.GetAxis("Horizontal"), _myController);
-            Speed(Input.GetAxis("Horizontal"));
-
-        if (Input.GetButton("Jump") && Jump != null)
+        MyCharacterMovement.Move(Input.GetAxis("Horizontal"));
+        
+        if (Input.GetButton("Jump"))
         {
-            Jump();
+           
+           // MyCharacterMovement
+            //Jump(Invoke());
+            StartCoroutine(MyCharacterMovement.Jump());
         }
     }
 }
