@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
-using Weapons;
+//using Weapons;
 using System;
 
 public class AnimateCharacter : MonoBehaviour
@@ -10,7 +10,7 @@ public class AnimateCharacter : MonoBehaviour
     public Weapon Weapon;
     public GameObject OnFx;
     public AudioSource SoundFx;
-    public WeaponsList MyWeaponsList;
+    //public WeaponsList MyWeaponsList;
 
     public void Step () {
         SoundFx.Play();
@@ -19,10 +19,10 @@ public class AnimateCharacter : MonoBehaviour
     void Start()
     {
         Jump();
-        EndGame.EndGameBoolHandler += OnEndGameEvent;
+      //  EndGame.EndGameBoolHandler += OnEndGameEvent;
         //MoveViaKeys.Jump += Jump;
         MoveViaKeys.Speed += Walk;
-        WeaponUi.CanFire += FireHandler;
+   //     WeaponUi.CanFire += FireHandler;
     }
 
     private void FireHandler(float num)
@@ -31,7 +31,7 @@ public class AnimateCharacter : MonoBehaviour
         CharacterAnim.SetTrigger("FireWeapon");
     }
      public void FireWeapon (                                                                                                                                                                                                                                                               ) {
-         MyWeaponsList.CurrentWeapon.Fire(true);
+//         MyWeaponsList.CurrentWeapon.Fire(true);
        // Invoke("EndFireWeapon", _data.CurrentWeapon.FireRate);
      }
 
@@ -50,7 +50,7 @@ public class AnimateCharacter : MonoBehaviour
         CharacterAnim.SetBool("Arm", false);
         CharacterAnim.SetLayerWeight(1, 0);
         CharacterAnim.SetBool("Die", true);
-        EndGame.EndGameBoolHandler -= OnEndGameEvent;
+       // EndGame.EndGameBoolHandler -= OnEndGameEvent;
         this.enabled = false;
     }
 
@@ -80,4 +80,14 @@ public class AnimateCharacter : MonoBehaviour
     {
         CharacterAnim.SetBool("Jump", false);
     }
+}
+
+public class EndGame
+{
+    public static object EndGameBoolHandler { get; set; }
+    public static object TurnOffGame { get; set; }
+}
+
+public class Weapon
+{
 }

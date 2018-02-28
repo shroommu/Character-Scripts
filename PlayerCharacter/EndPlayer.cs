@@ -7,7 +7,7 @@ public class EndPlayer : MonoBehaviour {
 
 	void Start()
     {
-        EndGame.EndGameBoolHandler += OnEndPlayer;
+       // EndGame.EndGameBoolHandler += OnEndPlayer;
     }
 
 	bool OnEndPlayer(bool b)
@@ -18,7 +18,7 @@ public class EndPlayer : MonoBehaviour {
         }
         else
         {
-            EndGame.EndGameBoolHandler -= OnEndPlayer;
+      //      EndGame.EndGameBoolHandler -= OnEndPlayer;
 //            this.enabled = false;//End Player Scripts
         }
         return b;

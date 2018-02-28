@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class EnemyWeaponFX : EffectSettings {
+public class EnemyWeaponFX  {
 
 
 	//and extention of the Effects Settings class as part of the Realistic FX Packs
@@ -11,9 +11,9 @@ public class EnemyWeaponFX : EffectSettings {
 	public Action<EnemyWeaponFX> ResetAmmo;//a delegate that sends it's settings to the player's health
 
 
-	public override void OnEffectDeactivatedHandler ()
+	public void OnEffectDeactivatedHandler ()
 	{
-		base.OnEffectDeactivatedHandler ();
+		//base.OnEffectDeactivatedHandler ();
 
 			if (ResetAmmo != null) {
 				ResetAmmo (this);
@@ -23,11 +23,11 @@ public class EnemyWeaponFX : EffectSettings {
 	//waits to load into the game to add Action subscribers, then deactivates
 	public IEnumerator StartLate () {
 		yield return new WaitForSeconds (0.01f);
-		this.gameObject.SetActive (false);
+	//	this.gameObject.SetActive (false);
 	}
 
 	public virtual void Start () {
-		StartCoroutine (StartLate ());
+	//	StartCoroutine (StartLate ());
 	}
 	
 }

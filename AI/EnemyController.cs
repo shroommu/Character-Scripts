@@ -94,3 +94,7 @@ public class EnemyController : MonoBehaviour
         EnemySpawnerDelegate.ActivateEnemyEvent += Reactivate;//subscripts the Reactivate function the the EnemySpawnerDelegate event
     }
 }
+
+public class WeaponClass
+{
+}

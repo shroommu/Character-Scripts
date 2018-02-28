@@ -27,8 +27,8 @@ public class EnemyAutoFire : MonoBehaviour {
 	void Fire ()
 	{
 		if (enemyAmmoList.Count > 0) {
-			enemyAmmoList [i].transform.position = ammoStart.transform.position;
-			enemyAmmoList [i].gameObject.SetActive (true);
+		//	enemyAmmoList [i].transform.position = ammoStart.transform.position;
+		//	enemyAmmoList [i].gameObject.SetActive (true);
 			enemyAmmoList.RemoveAt (0);
 		} else {
 			EnemyAnimation.SetBool("Fire", false);

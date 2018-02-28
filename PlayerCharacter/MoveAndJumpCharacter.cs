@@ -16,9 +16,9 @@ public class MoveAndJumpAndFloatCharacter : CharacterMovement
 
     private void Start()
     {
-        UiAnimStates.CanPlay += CanPlayHandler;
+   //     UiAnimStates.CanPlay += CanPlayHandler;
         CanPlayHandler();
-        EndGame.TurnOffGame += EndGameHandler;
+     //   EndGame.TurnOffGame += EndGameHandler;
     }
 
 

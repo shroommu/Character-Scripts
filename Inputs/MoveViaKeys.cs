@@ -19,7 +19,7 @@ public class MoveViaKeys : MonoBehaviour
     //Methods
     private void Start()
     {
-        EndGame.TurnOffGame += DisableScript;
+       // EndGame.TurnOffGame += DisableScript;
         MyCharacterMovement.MyCharacterController = GetComponent<CharacterController>();
     }
 

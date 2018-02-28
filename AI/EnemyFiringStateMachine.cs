@@ -16,7 +16,7 @@ public class EnemyFiringStateMachine : MonoBehaviour
     void Awake()
     {
         EndFiring();
-        EndGame.TurnOffGame += EndFiring;
+        //EndGame.TurnOffGame += EndFiring;
     }
 
     void OnTriggerEnter()
