@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: 6fd822570a7e8b6498ee7d6aa0ab2ade
+timeCreated: 1522947801
+licenseType: Pro
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - InputX: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  - InputY: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  - InputZ: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  - InputRotateX: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  - InputRotateY: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  - InputRotateZ: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  - JumpInput: {fileID: 11400000, guid: cc704c685359c8b44bb6d34b2a432f1a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
