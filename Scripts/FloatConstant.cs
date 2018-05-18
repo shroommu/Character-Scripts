@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 
 [CreateAssetMenu]
-public class FloatConstant : InputBase
+public class FloatConstant : InputBase, IInput
 {
 
     public float FloatValue = 0;
@@ -14,3 +14,4 @@ public class FloatConstant : InputBase
         return FloatValue;
     }
 }
+

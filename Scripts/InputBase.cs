@@ -6,3 +6,8 @@ public abstract class InputBase : ScriptableObject
 {
 	public abstract float SetFloat ();
 }
+
+public interface IInput
+{
+	float SetFloat();
+}
