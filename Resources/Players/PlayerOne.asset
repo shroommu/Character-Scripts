@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1accd195871449d9a44c163459f053, type: 3}
   m_Name: PlayerOne
   m_EditorClassIdentifier: 
-  PlayerMovePattern: {fileID: 11400000, guid: 80fa3d16513464af29f38b8bd3d8062f, type: 2}
+  PlayerMovePattern: {fileID: 11400000, guid: 7b8262c7226d04a43a81a44495ec4244, type: 2}
