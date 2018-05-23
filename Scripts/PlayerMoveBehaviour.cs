@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveCharacter : MonoBehaviour
+[RequireComponent(typeof(CharacterController))]
+public class PlayerMoveBehaviour : MonoBehaviour
 {
-    public MovePattern MovePattern;
+    public Player PlayerController;
     private CharacterController controller;
     
     private void Start()
@@ -13,6 +14,6 @@ public class MoveCharacter : MonoBehaviour
     }
 
     void Update() {
-        MovePattern.Move(controller, transform);
+        PlayerController.PlayerMovePattern.Move(controller, transform);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Assertions.Comparers;
 
 [CreateAssetMenu]
-public class FloatInput : InputBase
+public class FloatInput : InputBase, IInput
 {
 
 	public string InputName = "Horizontal";
